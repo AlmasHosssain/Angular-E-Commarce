@@ -1,0 +1,43 @@
+<div class="container">
+   <div class="row">
+     <div class="col-md-12">
+       <div class="jumbotron text-center my-3">
+         <h1 class="display-3">Thank You..!</h1>
+         <p class="lead"><strong>You are welcome always</strong> in our family.</p>
+         
+       </div>
+       <table class="table table-striped" *ngIf="cartData.data[0].inCart!==0">
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of cartData.data;let i =index">
+          <td>
+            <img [src]="p.product.image" alt="{{p.product.title}}" class="img-thumbnail" width="100px">
+          </td>
+          <td>{{p.product.title}}</td>
+          <td>{{p.product.price | currency:'USD'}}</td>
+          <td>{{p.inCart}}</td>
+        </tr>
+
+        <tr class="border-0">
+          <td style="border: none;"></td>
+          <td></td>
+          <td>TOTAL</td>
+          <td>{{cartTotal.toFixed(3) | currency:'USD'}}</td>
+
+        </tr>
+        </tbody>
+      </table>
+       <button style="left: 43%;position: relative;" class="btn btn-success text-center my-5" routerLink='/' (click)="cartService.finish()" >Finish Your Work</button>
+      </div>
+   </div>
+ </div>
+ 
+ 
+ 
